@@ -1,0 +1,40 @@
+name: CI/CD Full Process
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # --- PHẦN 1: TEST & BUILD ---
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Test Project 1 (Backend)
+        working-directory: ./Project1-FullStack/backend
+        run: npm install && npm test
+
+      - name: Test Project 1 (Frontend)
+        working-directory: ./Project1-FullStack/frontend
+        run: npm install && npm test && npm run build
+
+      # --- PHẦN 2: DEPLOY ---
+      - name: Deploy Backend Node (Render)
+        if: success()
+        # Dán LINK_HOOK_NODE của bạn vào dưới đây
+        run: curl -X POST https://api.render.com/deploy/srv-xxxxxx?key=yyyyyy
+
+      - name: Deploy Project Python (Render)
+        if: success()
+        # Dán LINK_HOOK_PYTHON của bạn vào dưới đây
+        run: curl -X POST https://api.render.com/deploy/srv-zzzzzz?key=kkkkkk
+
+      - name: Notify Vercel
+        run: echo "Frontend Vercel will auto-deploy."
