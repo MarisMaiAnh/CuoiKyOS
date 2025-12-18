@@ -29,12 +29,12 @@ jobs:
       - name: Deploy Backend Node (Render)
         if: success()
         # Dán LINK_HOOK_NODE của bạn vào dưới đây
-        run: curl -X POST https://api.render.com/deploy/srv-xxxxxx?key=yyyyyy
+        run: curl -X POST https://api.render.com/deploy/srv-d51gb463jp1c73a0rlug?key=3hbXwbfe_wA
 
       - name: Deploy Project Python (Render)
         if: success()
         # Dán LINK_HOOK_PYTHON của bạn vào dưới đây
-        run: curl -X POST https://api.render.com/deploy/srv-zzzzzz?key=kkkkkk
+        run: curl -X POST https://api.render.com/deploy/srv-d51gfr5actks73b0e3ug?key=2g8z7qL9zc8
 
       - name: Notify Vercel
         run: echo "Frontend Vercel will auto-deploy."
