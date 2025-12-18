@@ -2,7 +2,7 @@ name: CI/CD Full Process
 
 on:
   push:
-    branches: ["main"]
+    branches: ["master"]
 
 jobs:
   test-and-deploy:
