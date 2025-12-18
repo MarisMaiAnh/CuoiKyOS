@@ -13,6 +13,7 @@ function App() {
 
   return (
     <div style={{textAlign: 'center', marginTop: '50px'}}>
+      <h1>Nguyen Hoang Mai Anh-Chieu thu 5</h1>
       <h1>PROJECT 1: REACT & NODE</h1>
       <h2 style={{color: 'blue'}}>{msg}</h2>
     </div>
